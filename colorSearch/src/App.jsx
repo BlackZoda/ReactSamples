@@ -10,7 +10,9 @@ function App() {
         <main>
             <h1>COLOR SEARCH</h1>
             <ColorDisplay color={color} />  
-            <InputColor setColor={setColor} />
+            <InputColor
+                color={color}
+                setColor={setColor} />
         </main>
     )
 }

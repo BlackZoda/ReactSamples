@@ -7,12 +7,12 @@
 html {
     font-size: 10px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #eee;
+    color: #fff;
 }
 
 body {
     background: linear-gradient(30deg, rgb(40, 40, 60), rgb(60, 60, 80));
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -22,12 +22,18 @@ body {
     margin: 10px;
     letter-spacing: 4px;
  }
+  p {
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+  }
 
 .colorDisplay {
     width: 400px;
     height: 400px;
     background-color: #fff;
     border-radius: 5px;
+    display: grid;
+    place-items: center;
 }
 
 .colorForm input {
