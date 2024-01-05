@@ -25,6 +25,7 @@ body {
   p {
     font-size: 1.6rem;
     letter-spacing: 2px;
+    margin: 4px;
   }
 
 .colorDisplay {
@@ -32,8 +33,10 @@ body {
     height: 400px;
     background-color: #fff;
     border-radius: 5px;
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .colorForm input {
@@ -44,4 +47,5 @@ body {
     border-radius: 5px;
     border-style: none;
     font-size: 1.6rem;
+    letter-spacing: 1px;
 }
