@@ -7,11 +7,18 @@ const InputColor = ({ color, setColor, setHexValue, setHslValue }) => {
     const reHexSix = /^#[A-Fa-f0-9]{6}$/
     const reHexThree = /^#[A-Fa-f0-9]{3}$/
 
+    const validateColor = (str) => {
+        let color = reHexSix.test(str) || reHexThree.test(str) ? str : null;
+        const colObj = colorNames.get(str);
+        if (colObj) color = colObj.name;
+        return color;
+    }
+
     const setHexToHsl = (value) => {
         const hsl = reHexSix.test(value) ?
             hexToHSL(value) :
             reHexThree.test(value) ?
-                hexToHSL(hexThreeToSix(value)) :
+                hexToHSL(value.replaceAll(reHexValue, v => v + v)) :
                 hexToHSL(colorNames(value));
         hsl ? setHslValue(hsl) : setHslValue('');
     }
@@ -26,7 +33,7 @@ const InputColor = ({ color, setColor, setHexValue, setHslValue }) => {
                 type='text'
                 placeholder='enter color'
                 onChange={(e) => {
-                    setColor(e.target.value);
+                    setColor(validateColor(e.target.value));
                     reHexSix.test(e.target.value) ?
                         setHexValue(e.target.value) :
                         reHexThree.test(e.target.value) ?
@@ -35,7 +42,7 @@ const InputColor = ({ color, setColor, setHexValue, setHslValue }) => {
                     setHexToHsl(e.target.value);    
                 }}
                 required
-                value={color} />
+                defaultValue={color} />
         </form>
     )
 }

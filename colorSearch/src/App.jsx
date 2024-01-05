@@ -19,9 +19,7 @@ function App() {
             <InputColor
                 color={color}
                 setColor={setColor}
-                hexValue={hexValue}
                 setHexValue={setHexValue}
-                hslValue={hslValue}
                 setHslValue={setHslValue}
             />
         </main>
