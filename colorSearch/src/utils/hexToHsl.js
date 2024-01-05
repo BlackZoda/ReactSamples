@@ -19,6 +19,7 @@ const hexToHSL = (hex) => {
 
         if (max === min) {
             // Achromatic
+            l = Math.floor(l * 100);
             return { h: 0, s: 0, l };
         }
 

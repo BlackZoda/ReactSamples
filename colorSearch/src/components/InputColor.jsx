@@ -3,10 +3,15 @@ import hexToHSL from '../utils/hexToHsl';
 
 const InputColor = ({ color, setColor, setHexValue, setHslValue }) => {
 
+    const re = /^#/
+
     const setHexToHsl = (value) => {
-        const hsl = hexToHSL(colorNames(value));
+        const hsl = re.test(value) ?
+            hexToHSL(value) :
+            hexToHSL(colorNames(value));
         hsl ? setHslValue(hsl) : setHslValue('');
     }
+
 
     return (
         <form className='colorForm' onSubmit={e => e.preventDefault()}>
@@ -15,7 +20,9 @@ const InputColor = ({ color, setColor, setHexValue, setHslValue }) => {
                 placeholder='enter color'
                 onChange={(e) => {
                     setColor(e.target.value);
-                    setHexValue(colorNames(e.target.value));
+                    re.test(e.target.value) ?
+                        setHexValue(e.target.value) :
+                        setHexValue(colorNames(e.target.value));
                     setHexToHsl(e.target.value);
                 }}
                 required
