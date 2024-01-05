@@ -3,15 +3,22 @@ import hexToHSL from '../utils/hexToHsl';
 
 const InputColor = ({ color, setColor, setHexValue, setHslValue }) => {
 
-    const re = /^#/
+    const reHexValue = /[A-Fa-f0-9]/g
+    const reHexSix = /^#[A-Fa-f0-9]{6}$/
+    const reHexThree = /^#[A-Fa-f0-9]{3}$/
 
     const setHexToHsl = (value) => {
-        const hsl = re.test(value) ?
+        const hsl = reHexSix.test(value) ?
             hexToHSL(value) :
-            hexToHSL(colorNames(value));
+            reHexThree.test(value) ?
+                hexToHSL(hexThreeToSix(value)) :
+                hexToHSL(colorNames(value));
         hsl ? setHslValue(hsl) : setHslValue('');
     }
 
+    const hexThreeToSix = (hexThree) => {
+        return hexThree.replaceAll(reHexValue, v => v+v);
+    }
 
     return (
         <form className='colorForm' onSubmit={e => e.preventDefault()}>
@@ -20,10 +27,12 @@ const InputColor = ({ color, setColor, setHexValue, setHslValue }) => {
                 placeholder='enter color'
                 onChange={(e) => {
                     setColor(e.target.value);
-                    re.test(e.target.value) ?
+                    reHexSix.test(e.target.value) ?
                         setHexValue(e.target.value) :
-                        setHexValue(colorNames(e.target.value));
-                    setHexToHsl(e.target.value);
+                        reHexThree.test(e.target.value) ?
+                            setHexValue(hexThreeToSix(e.target.value))  :
+                            setHexValue(colorNames(e.target.value)) ;
+                    setHexToHsl(e.target.value);    
                 }}
                 required
                 value={color} />

@@ -9,9 +9,9 @@ const ColorDisplay = ({ color, hexValue, hslValue }) => {
         <section className="colorDisplay" style={style}>
             <p>{color ? color : "empty value"}</p>
             <p>{hexValue ? hexValue : "#"}</p>
-            <p>H: {hslValue.h ? hslValue.h : ""}</p>
-            <p>S: {hslValue.s ? hslValue.s : ""}</p>
-            <p>L: {hslValue.l ? hslValue.l : ""}</p>
+            <p>H: {hslValue.h ? hslValue.h : "0"}</p>
+            <p>S: {hslValue.s ? hslValue.s : "0"}</p>
+            <p>L: {hslValue.l ? hslValue.l : "0"}</p>
         </section>
     )
 }
