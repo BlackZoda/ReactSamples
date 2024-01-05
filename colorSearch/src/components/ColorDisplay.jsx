@@ -2,7 +2,7 @@ const ColorDisplay = ({ color, hexValue, hslValue }) => {
 
     const style = {
         backgroundColor:color,
-        color: hslValue.l > 30 && hslValue.h < 200 ? "#444" : "#ccc"
+        color: hslValue.l > 40 && hslValue.h < 100 ? "#444" : "#ccc"
     }
 
     return (
