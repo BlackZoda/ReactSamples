@@ -47,7 +47,7 @@ const hexToHSL = (hex) => {
         return { h, s, l };
     }
 
-    return undefined;
+    return { h: 0, s: 0, l: 0 };
 }
 
 export default hexToHSL;
