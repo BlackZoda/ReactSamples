@@ -16,7 +16,8 @@ body {
     min-height: 100vh;
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -33,8 +34,90 @@ h2 {
 }
 
 p {
-    font-size: 1.6rem;
-    letter-spacing: 2px;
-    margin: 4px;
+    font-size: 1rem;
 }
 
+button, select {
+    border-style: none;
+    background-color: rgb(20, 20, 30);
+    height: 30px;
+    width: 30px;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+}
+
+button:hover, select:hover {
+    background-color: rgb(40, 40, 60);
+    cursor: pointer;
+}
+
+.searchBar {
+    display: flex;
+    align-items: left;
+}
+
+table {
+    min-width: 900px;
+    margin: 10px 0;
+}
+
+table img {
+    height: 50px;
+    padding: 4px;
+}
+
+thead {
+    height: 20px;
+}
+
+thead td {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+td {
+    text-align: left;
+    min-width: 20px;
+}
+
+.pagingation-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.active-page-number {
+    background-color: rgb(60, 40, 40);
+}
+
+.active-page-number:hover {
+    background-color: rgb(80, 60, 60);
+}
+
+.pagination,
+.page-nav {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.page-size-container label {
+    margin: 0 5px;
+}
+
+.page-size-container select {
+    min-width: 50px;
+    padding: 0 5px;
+    border-radius: 5px;
+}
+
+.page-nav-container {
+    display: flex;
+    align-items: center;
+}
+
+.page-nav-container p {
+    margin: 5px;
+}
