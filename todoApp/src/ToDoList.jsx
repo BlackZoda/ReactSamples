@@ -47,31 +47,47 @@ const ToDoList = () => {
   };
 
   return (
-    <div className="to-do-container">
-      <h1>To-Do List</h1>
-      <div>
+    <div className="h-full w-screen flex flex-col items-center gap-5 mt-10">
+      <h1 className="text-4xl font-bold tracking-wider">To-Do List</h1>
+      <div className="w-8/12 flex items-center mt-5 mb-8">
         <input
           type="text"
           placeholder="Enter a task..."
           value={newTask}
           onChange={handleInputChange}
+          className="h-10 flex-1 mr-5 p-3 rounded text-zinc-800"
         />
-        <Button type="add-button" onClick={addTask}>
+        <Button
+          onClick={addTask}
+          className="h-10 w-40 rounded bg-teal-600 hover:bg-teal-500"
+        >
           Add Task
         </Button>
       </div>
-      <ol>
+      <ol className="w-8/12 flex flex-col gap-3">
         {tasks.map((task, index) => (
-          <li key={`k-${index}`}>
-            <span className="text">{task}</span>
-            <Button index={index} onClick={deleteTask}>
-              Delete
-            </Button>
-            <Button index={index} onClick={moveTaskUp}>
+          <li className="flex justify-between gap-3" key={`k-${index}`}>
+            <span className="flex-1 text-lg">{task}</span>
+            <Button
+              className="h-6 w-20 rounded bg-indigo-600 hover:bg-indigo-500"
+              index={index}
+              onClick={moveTaskUp}
+            >
               UP
             </Button>
-            <Button index={index} onClick={moveTaskDown}>
+            <Button
+              className="h-6 w-20 rounded bg-indigo-600 hover:bg-indigo-500"
+              index={index}
+              onClick={moveTaskDown}
+            >
               DOWN
+            </Button>
+            <Button
+              className="h-6 w-20 rounded bg-pink-600 hover:bg-pink-500"
+              index={index}
+              onClick={deleteTask}
+            >
+              Delete
             </Button>
           </li>
         ))}
@@ -80,9 +96,9 @@ const ToDoList = () => {
   );
 };
 
-const Button = ({ type = "new-button", index = 0, onClick, children }) => {
+const Button = ({ className, index = 0, onClick, children }) => {
   return (
-    <button className={type} type="button" onClick={() => onClick(index)}>
+    <button className={className} type="button" onClick={() => onClick(index)}>
       {children}
     </button>
   );
