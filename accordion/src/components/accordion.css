@@ -8,12 +8,21 @@
   justify-content: center;
 }
 
+.accordion button {
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: #f2a;
+  color: #fff;
+  cursor: pointer;
+}
+
 .item {
   cursor: pointer;
   background-color: #446;
   width: 90%;
   margin: 5px 0;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .question {
