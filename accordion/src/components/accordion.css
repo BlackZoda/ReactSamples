@@ -1,0 +1,35 @@
+.accordion {
+  height: 100vh;
+  background-color: #223;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.item {
+  cursor: pointer;
+  background-color: #446;
+  width: 90%;
+  margin: 5px 0;
+  border-radius: 10px;
+}
+
+.question {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.question span {
+  margin-left: 5px;
+}
+
+.answer {
+  text-align: center;
+}
+
+.answer p {
+  margin: 0 15px 25px 15px;
+}
