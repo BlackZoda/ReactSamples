@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import "./loadMore.css";
 
 const LoadMore = () => {
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState([]);
   const [count, setCount] = useState(1);
+  const [disableButton, setDisableButton] = useState(false);
 
   const fetchProducts = async () => {
     try {
@@ -17,7 +19,7 @@ const LoadMore = () => {
       const data = await response.json();
 
       if (data?.products?.length) {
-        setProducts(data.products);
+        setProducts((prevData) => [...prevData, ...data.products]);
         setLoading(false);
       }
     } catch (e) {
@@ -28,7 +30,11 @@ const LoadMore = () => {
 
   useEffect(() => {
     fetchProducts();
-  }, []);
+  }, [count]);
+
+  useEffect(() => {
+    products?.length >= 100 ? setDisableButton(true) : setDisableButton(false);
+  }, [products]);
 
   if (loading) {
     return <div>Loading data... Please wait.</div>;
@@ -36,15 +42,25 @@ const LoadMore = () => {
 
   return (
     <div className="load-more">
-      <div>
+      <div className="product-container">
         {products?.length
           ? products.map((item) => (
-              <div key={item.id.toString()}>
+              <div className="product" key={item.id.toString()}>
                 <img src={item.thumbnail} alt={item.title} />
                 <p>{item.title}</p>
               </div>
             ))
           : null}
+      </div>
+      <div className="button-container">
+        <button
+          type="button"
+          disabled={disableButton}
+          onClick={() => setCount(count + 1)}
+        >
+          Load More Products
+        </button>
+        {disableButton ? <p>You have loaded all 100 products</p> : null}
       </div>
     </div>
   );
